@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="container">
+		<div id="date_element">
+			<h2>Currency Exchange Rate on {{ current_date }}</h2>
+		</div>
+		<div id="sum_element">
+			Sum in EUR: <input name="sum" id="sum_id" value="" size="10" onchange="getTotal(this)" />
+		</div>
+		<div id="currency_element">
+			Currency rate:
+			<select name="currency" id="currency_id" onchange="getTotal(this)">
+				<option value="EUR">EUR 1</option>
+				{% for currency in currencies %}
+					<option value="{{ currency.name }}">{{ currency.name }} {{ currency.rate }}</option>
+				{% endfor %}
+			   	#}
+			</select>
+			
+		</div>
+		<div id="result_element">
+			Result in selected currency: <input name="total" id="total_id" value="" readonly="readonly" size="10" />
+		</div>
+	</div>
+{% endblock %}
